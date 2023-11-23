@@ -1,0 +1,22 @@
+﻿<Window x:Class="GettingRealWPF.WindowProdukter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GettingRealWPF"
+        mc:Ignorable="d"
+        Title="WindowProdukter" Height="450" Width="800">
+    <Grid>
+        <Button Content="Tilbage" HorizontalAlignment="Left" Margin="28,367,0,0" VerticalAlignment="Top" Height="38" Width="82" Click="Button_Click"/>
+        <Button Content="Rediger Produkter" HorizontalAlignment="Left" Margin="623,367,0,0" VerticalAlignment="Top" Height="39" Width="137"/>
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="58,77,638,91"/>
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="220,78,478,91"/>
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="381,77,317,91"/>
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="540,77,158,91"/>
+        <Label Content="Merchandise" HorizontalAlignment="Left" Margin="58,43,0,0" VerticalAlignment="Top" Height="29" Width="104"/>
+        <Label Content="Bær. Merchandise" HorizontalAlignment="Left" Margin="211,43,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Firmagaver" HorizontalAlignment="Left" Margin="381,43,0,0" VerticalAlignment="Top" Height="28" Width="102"/>
+        <Label Content="Profilbekledning" HorizontalAlignment="Left" Margin="540,43,0,0" VerticalAlignment="Top" Width="102"/>
+
+    </Grid>
+</Window>

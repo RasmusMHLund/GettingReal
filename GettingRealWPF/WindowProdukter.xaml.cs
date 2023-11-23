@@ -10,25 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace GettingRealWPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for WindowProdukter.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WindowProdukter : Window
     {
-        public MainWindow()
+        public WindowProdukter()
         {
             InitializeComponent();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            WindowProdukter windowProdukter = new WindowProdukter();
-            windowProdukter.Show();
 
         }
     }
