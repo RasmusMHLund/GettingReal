@@ -25,21 +25,16 @@ namespace GettingRealWPF
             InitializeComponent();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Brev_Click(object sender, RoutedEventArgs e)
         {
-
+            BrevWindow brevWindow = new BrevWindow();
+            brevWindow.Show();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void produkt_Click(object sender, RoutedEventArgs e)
         {
             WindowProdukter windowProdukter = new WindowProdukter();
             windowProdukter.Show();
-
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
