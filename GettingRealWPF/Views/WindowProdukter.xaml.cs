@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GettingRealWPF.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,13 @@ namespace GettingRealWPF
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            TilføjProdukt tilføjProdukt = new TilføjProdukt();
+            tilføjProdukt.Show();
+
         }
     }
 }
