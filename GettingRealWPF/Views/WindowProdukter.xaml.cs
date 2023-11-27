@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GettingRealWPF.ViewModels;
 
 namespace GettingRealWPF
 {
@@ -19,9 +20,13 @@ namespace GettingRealWPF
     /// </summary>
     public partial class WindowProdukter : Window
     {
+        private ProdukterViewModel viewModel;
         public WindowProdukter()
         {
             InitializeComponent();
+
+            ProdukterViewModel viewModel = new ProdukterViewModel();
+            DataContext = viewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

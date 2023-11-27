@@ -14,7 +14,7 @@ namespace GettingRealWPF.Models.Produkter
         
         public override string ToString()
         {
-            return $"Kategori: {Navn}, Pris: {Pris}, Varenummer: {Varenummer}";
+            return $"Navn: {Navn}, Pris: {Pris}, Varenummer: {Varenummer}";
         }
     }
 }

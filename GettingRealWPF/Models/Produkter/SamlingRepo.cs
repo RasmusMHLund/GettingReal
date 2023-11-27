@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace GettingRealWPF.Models.Produkter
 {
     internal class SamlingRepo
     {
-       private List<Samling> samlingList = new List<Samling>();
+        private ObservableCollection<Samling> samlingList = new ObservableCollection<Samling>();
 
         public void AddSamling(Samling samling)
         {
@@ -18,9 +19,10 @@ namespace GettingRealWPF.Models.Produkter
         {
             samlingList.Remove(samling);
         }
-        public List<Samling > GetSamlingList()
+        public ObservableCollection<Samling> SamlingList
         {
-            return samlingList;
+            get { return samlingList; }
+            set { samlingList = value; }
         }
     }
 }
