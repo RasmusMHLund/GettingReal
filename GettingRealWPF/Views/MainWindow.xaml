@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Width="{x:Static SystemParameters.PrimaryScreenWidth}"  
         Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
+        ResizeMode="NoResize"
         Title="Nyhedsbrevsystem">
 
     <Grid>
@@ -38,6 +39,7 @@
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Top" 
                 Margin="0,566,0,0" 
+                Click="BtnAbonnementer_Clik"
                 />
 
         <Button Content="Nyhedsbrev" 
