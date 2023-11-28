@@ -14,14 +14,17 @@ using System.Windows.Shapes;
 
 namespace GettingRealWPF.Views
 {
-    /// <summary>
-    /// Interaction logic for WindowAbonnementer.xaml
-    /// </summary>
+   
     public partial class WindowAbonnementer : Window
     {
         public WindowAbonnementer()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace GettingRealWPF.ViewModels
 {
     class ProduktViewModel
     {
-        private SamlingRepo samlingRepository;
+        private SamlingRepo samlingRepository = new SamlingRepo();
 
         public ObservableCollection<Samling> Merchandise { get; set; }
         public ObservableCollection<Samling> BærMerchandise { get; set; }
@@ -20,8 +20,7 @@ namespace GettingRealWPF.ViewModels
 
         public ProduktViewModel()
         {
-            samlingRepository = new SamlingRepo();
-
+            
             Merchandise = new ObservableCollection<Samling>(samlingRepository.GetMerchandise());
             BærMerchandise = new ObservableCollection<Samling>(samlingRepository.GetBærMerchandise());
             Firmagaver = new ObservableCollection<Samling>(samlingRepository.GetFirmagaver());

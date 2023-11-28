@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using GettingRealWPF.Models.Produkter;
 using GettingRealWPF.ViewModels;
+using GettingRealWPF.Views;
 
 namespace GettingRealWPF
 {
@@ -21,7 +22,7 @@ namespace GettingRealWPF
     /// </summary>
     public partial class WindowProdukter : Window
     {
-        private ProduktViewModel viewModel;
+        private ProduktViewModel viewModel; // viewModel.Merchandise.Add() for at tilføje til de enkelte elementer
         public WindowProdukter()
         {
             InitializeComponent();
@@ -32,6 +33,12 @@ namespace GettingRealWPF
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            TilføjProdukt tilføjProdukt = new TilføjProdukt();
+            tilføjProdukt.Show();
         }
     }
 }
