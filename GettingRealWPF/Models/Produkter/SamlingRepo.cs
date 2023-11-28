@@ -19,10 +19,28 @@ namespace GettingRealWPF.Models.Produkter
         {
             samlingList.Remove(samling);
         }
-        public ObservableCollection<Samling> SamlingList
+        public ObservableCollection<Samling> GetMerchandise()
         {
-            get { return samlingList; }
-            set { samlingList = value; }
+            // Returner en separat liste for Merchandise
+            return new ObservableCollection<Samling>(samlingList);
+        }
+
+        public ObservableCollection<Samling> GetBærMerchandise()
+        {
+            // Returner en separat liste for BearMerchandise
+            return new ObservableCollection<Samling>(samlingList);
+        }
+
+        public ObservableCollection<Samling> GetFirmagaver()
+        {
+            // Returner en separat liste for Firmagaver
+            return new ObservableCollection<Samling>(samlingList);
+        }
+
+        public ObservableCollection<Samling> GetProfilbekledning()
+        {
+            // Returner en separat liste for Profilbekledning
+            return new ObservableCollection<Samling>(samlingList);
         }
     }
 }
