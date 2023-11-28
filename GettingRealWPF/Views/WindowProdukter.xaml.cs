@@ -27,9 +27,10 @@ namespace GettingRealWPF
         {
             InitializeComponent();
 
-            ProduktViewModel viewModel = new ProduktViewModel();
+            viewModel = new ProduktViewModel(); // Hvis `viewModel` er en klassevariabel
             DataContext = viewModel;
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Close();

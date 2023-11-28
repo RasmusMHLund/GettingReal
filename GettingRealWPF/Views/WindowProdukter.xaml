@@ -3,15 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GettingRealWPF"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:GettingRealWPF" xmlns:viewmodels="clr-namespace:GettingRealWPF.ViewModels" 
         Title="WindowProdukter" Height="450" Width="800">
     <Grid>
         <Button Content="Tilbage" HorizontalAlignment="Left" Margin="58,360,0,0" VerticalAlignment="Top" Height="38" Width="82" Click="Button_Click"/>
         <ListBox ItemsSource="{Binding Merchandise}" Margin="58,77,638,91"/>
-        <ListBox ItemsSource="{Binding BearMerchandise}" Margin="220,78,478,91"/>
+        <ListBox ItemsSource="{Binding BærMerchandise}" Margin="220,78,478,91"/>
         <ListBox ItemsSource="{Binding Firmagaver}" Margin="381,77,317,91"/>
         <ListBox ItemsSource="{Binding Profilbekledning}" Margin="540,77,158,91"/>
+        
+
         <Label Content="Merchandise" HorizontalAlignment="Left" Margin="58,43,0,0" VerticalAlignment="Top" Height="29" Width="104"/>
         <Label Content="Bær. Merchandise" HorizontalAlignment="Left" Margin="211,43,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Firmagaver" HorizontalAlignment="Left" Margin="381,43,0,0" VerticalAlignment="Top" Height="28" Width="102"/>

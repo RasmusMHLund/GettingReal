@@ -7,19 +7,21 @@
         mc:Ignorable="d"
         Title="TilføjProdukt" Height="450" Width="800">
     <Grid>
-        <ComboBox x:Name="ProduktType" HorizontalAlignment="Left" Margin="47,84,0,0" VerticalAlignment="Top" Width="141"
-          ItemsSource="{Binding Kategorier}" DisplayMemberPath="NavnType"/>
-        
+        <ComboBox HorizontalAlignment="Left" Margin="47,84,0,0" VerticalAlignment="Top" Width="141"
+          ItemsSource="{Binding Kategorier}" DisplayMemberPath="NavnType" SelectedItem="{Binding ValgtKategori, Mode=TwoWay}"/>
 
-        <TextBox x:Name="Navn" HorizontalAlignment="Left" Margin="47,161,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.Navn, ElementName=ProduktType}" VerticalAlignment="Top" Width="141" Height="21"/>
-        <TextBox x:Name="Varenummer" HorizontalAlignment="Left" Margin="47,238,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.Varenummer, ElementName=ProduktType}" VerticalAlignment="Top" Width="141" Height="21"/>
-        <TextBox x:Name="Pris" HorizontalAlignment="Left" Margin="47,314,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.Pris, ElementName=ProduktType}" VerticalAlignment="Top" Width="141" Height="21"/>
+
+        <TextBox x:Name="Navn" HorizontalAlignment="Left" Margin="47,161,0,0" TextWrapping="Wrap" Text="{Binding Navn, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="141" Height="21" />
+        <TextBox x:Name="Varenummer" HorizontalAlignment="Left" Margin="47,238,0,0" TextWrapping="Wrap" Text="{Binding Varenummer}" VerticalAlignment="Top" Width="141" Height="21"/>
+        <TextBox x:Name="Pris" HorizontalAlignment="Left" Margin="47,314,0,0" TextWrapping="Wrap" Text="{Binding Pris}" VerticalAlignment="Top" Width="141" Height="21"/>
+
 
         <Button Content="Tilbage" HorizontalAlignment="Left" Margin="50,389,0,0" VerticalAlignment="Top" Height="27" Width="58" Click="Button_Click"/>
         <Label Content="Produkt Type:" HorizontalAlignment="Left" Margin="50,53,0,0" VerticalAlignment="Top"/>
         <Label Content="Navn:" HorizontalAlignment="Left" Margin="47,130,0,0" VerticalAlignment="Top"/>
         <Label Content="Varenummer:" HorizontalAlignment="Left" Margin="47,0,0,0" VerticalAlignment="Center"/>
         <Label Content="Pris:" HorizontalAlignment="Left" Margin="50,283,0,0" VerticalAlignment="Top"/>
-        <Button Click="GemProdukt_Click" Content="Gem Produkt" HorizontalAlignment="Left" Margin="130,389,0,0" VerticalAlignment="Top"  Height="27" Width="89"/>
+        <Button Content="Gem Produkt" HorizontalAlignment="Left" Margin="130,389,0,0" VerticalAlignment="Top" Height="27" Width="89" Click="GemProdukt_Click"/>
+
     </Grid>
 </Window>

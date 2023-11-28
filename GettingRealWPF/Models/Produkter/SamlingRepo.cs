@@ -21,29 +21,26 @@ namespace GettingRealWPF.Models.Produkter
         }
         public ObservableCollection<Samling> GetMerchandise()
         {
-            // Returner en separat liste for Merchandise
-            return new ObservableCollection<Samling>(samlingList);
+            return new ObservableCollection<Samling>(samlingList.Where(s => s.Kategori == "Merchandise"));
         }
 
         public ObservableCollection<Samling> GetBærMerchandise()
         {
-            // Returner en separat liste for BearMerchandise
-            return new ObservableCollection<Samling>(samlingList);
+            return new ObservableCollection<Samling>(samlingList.Where(s => s.Kategori == "BærMerchandise"));
         }
 
         public ObservableCollection<Samling> GetFirmagaver()
         {
-            // Returner en separat liste for Firmagaver
-            return new ObservableCollection<Samling>(samlingList);
+            return new ObservableCollection<Samling>(samlingList.Where(s => s.Kategori == "Firmagaver"));
         }
 
         public ObservableCollection<Samling> GetProfilbekledning()
         {
-            // Returner en separat liste for Profilbekledning
-            return new ObservableCollection<Samling>(samlingList);
+            return new ObservableCollection<Samling>(samlingList.Where(s => s.Kategori == "Profilbekledning"));
         }
-       
-        
+
+
+
     }
 }
 
