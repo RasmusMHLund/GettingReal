@@ -11,6 +11,8 @@ namespace GettingRealWPF.Models.Produkter
         public string Navn { get; set; }
         public double Pris {  get; set; }
         public string Varenummer { get; set; }
+        public string Kategori { get; set; }
+
         
         public override string ToString()
         {

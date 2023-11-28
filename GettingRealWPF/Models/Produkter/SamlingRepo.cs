@@ -42,6 +42,8 @@ namespace GettingRealWPF.Models.Produkter
             // Returner en separat liste for Profilbekledning
             return new ObservableCollection<Samling>(samlingList);
         }
+       
+        
     }
 }
 
