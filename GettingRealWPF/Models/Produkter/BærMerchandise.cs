@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GettingRealWPF.Models.Produkter
 {
-    internal class BærMerchandise : Samling
+    public class BærMerchandise : Samling
     {
         public BærMerchandise(string navn, double pris, string varenummer) : base()
         {

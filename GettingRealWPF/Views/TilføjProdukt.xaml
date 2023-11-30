@@ -3,17 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GettingRealWPF.Views"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:GettingRealWPF.Views" xmlns:viewmodels="clr-namespace:GettingRealWPF.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ProduktViewModel}"
+        mc:Ignorable="d" 
         Title="TilføjProdukt" Height="450" Width="800">
     <Grid>
         <ComboBox HorizontalAlignment="Left" Margin="47,84,0,0" VerticalAlignment="Top" Width="141"
-          ItemsSource="{Binding Kategorier}" DisplayMemberPath="NavnType" SelectedItem="{Binding ValgtKategori, Mode=TwoWay}"/>
+          ItemsSource="{Binding Kategorier, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="NavnType" SelectedItem="{Binding ValgtKategori, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
 
         <TextBox x:Name="Navn" HorizontalAlignment="Left" Margin="47,161,0,0" TextWrapping="Wrap" Text="{Binding Navn, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="141" Height="21" />
-        <TextBox x:Name="Varenummer" HorizontalAlignment="Left" Margin="47,238,0,0" TextWrapping="Wrap" Text="{Binding Varenummer}" VerticalAlignment="Top" Width="141" Height="21"/>
-        <TextBox x:Name="Pris" HorizontalAlignment="Left" Margin="47,314,0,0" TextWrapping="Wrap" Text="{Binding Pris}" VerticalAlignment="Top" Width="141" Height="21"/>
+
+
+        <TextBox x:Name="Varenummer" HorizontalAlignment="Left" Margin="47,238,0,0" TextWrapping="Wrap" Text="{Binding Varenummer, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="141" Height="21"/>
+        <TextBox x:Name="Pris" HorizontalAlignment="Left" Margin="47,314,0,0" TextWrapping="Wrap" Text="{Binding Pris, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="141" Height="21"/>
 
 
         <Button Content="Tilbage" HorizontalAlignment="Left" Margin="50,389,0,0" VerticalAlignment="Top" Height="27" Width="58" Click="Button_Click"/>

@@ -23,12 +23,13 @@ namespace GettingRealWPF
     public partial class WindowProdukter : Window
     {
         private ProduktViewModel viewModel; // viewModel.Merchandise.Add() for at tilføje til de enkelte elementer
+       
         public WindowProdukter()
         {
             InitializeComponent();
-
             viewModel = new ProduktViewModel(); // Hvis `viewModel` er en klassevariabel
             DataContext = viewModel;
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -40,6 +41,9 @@ namespace GettingRealWPF
         {
             TilføjProdukt tilføjProdukt = new TilføjProdukt();
             tilføjProdukt.Show();
+            
         }
+
+       
     }
 }

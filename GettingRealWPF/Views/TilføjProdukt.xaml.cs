@@ -22,14 +22,14 @@ namespace GettingRealWPF.Views
     public partial class TilføjProdukt : Window
     {
 
-        private ProduktViewModel viewModel;
+        
         public TilføjProdukt()
         {
             InitializeComponent();
 
-            viewModel = new ProduktViewModel();
-            DataContext = viewModel;
-       
+            
+            DataContext = new ProduktViewModel();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -38,8 +38,17 @@ namespace GettingRealWPF.Views
         }
         private void GemProdukt_Click(object sender, RoutedEventArgs e)
         {
-            // Håndter logik for at gemme produktet
-            viewModel.GemProdukt();
+            // Få adgang til ViewModel fra DataContext
+            ProduktViewModel viewModel = DataContext as ProduktViewModel;
+
+            if (viewModel != null)
+            {
+                // Kald GemProdukt-metoden i ViewModel
+                viewModel.GemProdukt();
+
+                // Eventuel logik eller meddelelse efter gemning af produktet
+                MessageBox.Show("Produkt gemt succesfuldt.");
+            }
         }
 
     }
