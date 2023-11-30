@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:GettingRealWPF.Views" xmlns:viewmodels="clr-namespace:GettingRealWPF.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ProduktViewModel}"
         mc:Ignorable="d" 
         Title="TilføjProdukt" Height="450" Width="800">
+    <Window.DataContext>
+        <viewmodels:ProduktViewModel />
+    </Window.DataContext>
     <Grid>
         <ComboBox HorizontalAlignment="Left" Margin="47,84,0,0" VerticalAlignment="Top" Width="141"
           ItemsSource="{Binding Kategorier, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="NavnType" SelectedItem="{Binding ValgtKategori, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

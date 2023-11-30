@@ -14,17 +14,11 @@ namespace GettingRealWPF.ViewModels
 {
     class ProduktViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public SamlingRepo Samling { get; set; }
+        
 
-        public SamlingRepo samling = new SamlingRepo();
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        // Comboboxen
+        public ObservableCollection<Samling> merchandises { get; set; } = new ObservableCollection<Samling>();
+        Samling samling = new Samling();
+        public event PropertyChangedEventHandler? PropertyChanged;
         public ObservableCollection<Kategorier> Kategorier { get; set; } = new ObservableCollection<Kategorier>
         {
             new Kategorier("Merchandise"),
@@ -32,22 +26,6 @@ namespace GettingRealWPF.ViewModels
             new Kategorier("Firmagaver"),
             new Kategorier("Profilbeklædning")
         };
-
-        // Constructor
-        public ProduktViewModel()
-        {
-            // Initialisér listerne fra SamlingRepo
-            Samling = new SamlingRepo
-            {
-                Merchandise = samling.GetMerchandise(),
-                BærMerchandise = samling.GetBærMerchandise(),
-                Firmagaver = samling.GetFirmagaver(),
-                Profilbeklædning = samling.GetProfilbeklædning()
-            };
-        }
-
-        // De 4 lister
-
         private Kategorier valgtKategori;
         public Kategorier ValgtKategori
         {
@@ -59,76 +37,36 @@ namespace GettingRealWPF.ViewModels
             }
         }
 
-        private string navn;
-        public string Navn
+        protected virtual void OnPropertyChanged(string propertyName)
         {
-            get { return navn; }
-            set
-            {
-                navn = value;
-                OnPropertyChanged(nameof(Navn));
-            }
-        }
-
-        private string varenummer;
-        public string Varenummer
-        {
-            get { return varenummer; }
-            set
-            {
-                varenummer = value;
-                OnPropertyChanged(nameof(Varenummer));
-            }
-        }
-
-        private double pris;
-        public double Pris
-        {
-            get { return pris; }
-            set
-            {
-                pris = value;
-                OnPropertyChanged(nameof(Pris));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void GemProdukt()
         {
-            SamlingRepo samlingRepo = new SamlingRepo();
             Kategorier valgtKategoriObjekt = ValgtKategori;
-
+            // Tjek om valgtKategoriObjekt er tildelt
             if (valgtKategoriObjekt != null)
             {
-                Samling nytProdukt = new Samling
+                
+                Samling nytProdukt = new Samling    
                 {
-                    Navn = Navn,
-                    Varenummer = Varenummer,
-                    Pris = Pris,
+                    Navn = samling.Navn,
+                    Varenummer = samling.Varenummer,
+                    Pris = samling.Pris,
                     Kategori = valgtKategoriObjekt.NavnType
                 };
 
                 switch (valgtKategoriObjekt.NavnType)
                 {
                     case "Merchandise":
-                        Samling.Merchandise.Add(nytProdukt);
-                        MessageBox.Show($"Tilføjede ny Merchandise {Navn}, {Varenummer}, {Pris}");
-                        OnPropertyChanged(nameof(Samling.Merchandise));
+                        merchandises.Add(nytProdukt);
+                        MessageBox.Show($"Tilføjede ny Merchandise {samling.Navn}, {samling.Varenummer}, {samling.Pris}");
+                        OnPropertyChanged(nameof(merchandises));
                         break;
-                    case "BærMerchandise":
-                        Samling.BærMerchandise.Add(nytProdukt);
-                        MessageBox.Show($"Tilføjede ny BærMerchandise {Navn}, {Varenummer}, {Pris}");
-                        OnPropertyChanged(nameof(Samling.BærMerchandise));
-                        break;
-                    case "Firmagaver":
-                        Samling.Firmagaver.Add(nytProdukt);
-                        MessageBox.Show($"Tilføjede ny Firmagaver {Navn}, {Varenummer}, {Pris}");
-                        OnPropertyChanged(nameof(Samling.Firmagaver));
-                        break;
-                    case "Profilbeklædning":
-                        Samling.Profilbeklædning.Add(nytProdukt);
-                        MessageBox.Show($"Tilføjede ny Profilbeklædning {Navn}, {Varenummer}, {Pris}");
-                        OnPropertyChanged(nameof(Samling.Profilbeklædning));
-                        break;
+
+                    // Tilføj flere cases for andre kategorier efter behov
+
                     default:
                         MessageBox.Show("Ukendt kategori");
                         break;
@@ -136,6 +74,7 @@ namespace GettingRealWPF.ViewModels
             }
         }
     }
+
 }
 
 

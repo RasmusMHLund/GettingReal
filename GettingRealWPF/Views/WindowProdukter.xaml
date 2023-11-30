@@ -15,18 +15,18 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Button Content="Tilbage" HorizontalAlignment="Left" Margin="58,360,0,0" VerticalAlignment="Top" Height="38" Width="82" Click="Button_Click" Grid.RowSpan="2"/>
-        <ListBox ItemsSource="{Binding Samling.Merchandise, UpdateSourceTrigger=PropertyChanged}"  Margin="26,77,628,91" Grid.RowSpan="2">
+        <ListBox ItemsSource="{Binding merchandises, UpdateSourceTrigger=PropertyChanged}"  Margin="26,77,628,91" Grid.RowSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Navn}"/>
-                        <TextBlock Text="{Binding Varenummer}"/>
-                        <TextBlock Text="{Binding Pris}"/>
+                        <TextBlock Text="{Binding Samling.Navn}"/>
+                        <TextBlock Text="{Binding Samling.Varenummer}"/>
+                        <TextBlock Text="{Binding Samling.Pris}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox ItemsSource="{Binding Samling.BærMerchandise}" Margin="220,78,478,91" Grid.RowSpan="2"/>
+        <ListBox ItemsSource="{Binding SamlingRepository.BærMerchandise}" Margin="220,78,478,91" Grid.RowSpan="2"/>
         <ListBox ItemsSource="{Binding Samling.Firmagaver}" Margin="381,77,317,91" Grid.RowSpan="2"/>
         <ListBox ItemsSource="{Binding Samling.Profilbeklædning}" Margin="540,77,158,91" Grid.RowSpan="2"/>
 
