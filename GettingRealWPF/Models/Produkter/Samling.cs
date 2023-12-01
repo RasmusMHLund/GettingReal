@@ -17,53 +17,53 @@ namespace GettingRealWPF.Models.Produkter
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private string navn;
+        private string _navn;
         public string Navn
         {
-            get { return navn; }
+            get { return _navn; }
             set
             {
-                navn = value;
+                _navn = value;
                 OnPropertyChanged(nameof(Navn));
             }
         }
 
-        private double pris;
+        private double _pris;
         public double Pris
         {
-            get { return pris; }
+            get { return _pris; }
             set
             {
-                pris = value;
+                _pris = value;
                 OnPropertyChanged(nameof(Pris));
             }
         }
 
-        private string varenummer;
+        private string _varenummer;
         public string Varenummer
         {
-            get { return varenummer; }
+            get { return _varenummer; }
             set
             {
-                varenummer = value;
+                _varenummer = value;
                 OnPropertyChanged(nameof(Varenummer));
             }
         }
 
-        private string kategori;
+        private string _kategori;
         public string Kategori
         {
-            get { return kategori; }
+            get { return _kategori; }
             set
             {
-                kategori = value;
+                _kategori = value;
                 OnPropertyChanged(nameof(Kategori));
             }
         }
 
-        public override string ToString()
+        /* public override string ToString()
         {
             return $"{Navn}, {Pris}, {Varenummer}, {Kategori}";
-        }
+        } */
     }
 }

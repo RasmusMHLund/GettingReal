@@ -14,11 +14,9 @@
           ItemsSource="{Binding Kategorier, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="NavnType" SelectedItem="{Binding ValgtKategori, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
 
-        <TextBox x:Name="Navn" HorizontalAlignment="Left" Margin="47,161,0,0" TextWrapping="Wrap" Text="{Binding Navn, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="141" Height="21" />
-
-
-        <TextBox x:Name="Varenummer" HorizontalAlignment="Left" Margin="47,238,0,0" TextWrapping="Wrap" Text="{Binding Varenummer, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="141" Height="21"/>
-        <TextBox x:Name="Pris" HorizontalAlignment="Left" Margin="47,314,0,0" TextWrapping="Wrap" Text="{Binding Pris, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="141" Height="21"/>
+        <TextBox x:Name="Navn" HorizontalAlignment="Left" Margin="47,161,0,0" TextWrapping="Wrap" Text="{Binding SelectedNavn, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="141" Height="21" />
+        <TextBox x:Name="Varenummer" HorizontalAlignment="Left" Margin="47,238,0,0" TextWrapping="Wrap" Text="{Binding SelectedVarenummer, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="141" Height="21"/>
+        <TextBox x:Name="Pris" HorizontalAlignment="Left" Margin="47,314,0,0" TextWrapping="Wrap" Text="{Binding SelectedPris, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="141" Height="21"/>
 
 
         <Button Content="Tilbage" HorizontalAlignment="Left" Margin="50,389,0,0" VerticalAlignment="Top" Height="27" Width="58" Click="Button_Click"/>

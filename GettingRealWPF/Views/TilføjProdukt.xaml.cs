@@ -22,14 +22,12 @@ namespace GettingRealWPF.Views
     public partial class TilføjProdukt : Window
     {
 
-        
-        public TilføjProdukt()
+        private ProduktViewModel viewModel;
+        public TilføjProdukt(ProduktViewModel viewModel)
         {
             InitializeComponent();
-
-            
-            DataContext = new ProduktViewModel();
-
+            this.viewModel = viewModel;
+            DataContext = viewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

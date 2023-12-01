@@ -39,11 +39,10 @@ namespace GettingRealWPF
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            TilføjProdukt tilføjProdukt = new TilføjProdukt();
+            TilføjProdukt tilføjProdukt = new TilføjProdukt(viewModel);
             tilføjProdukt.Show();
-            
         }
 
-       
+
     }
 }

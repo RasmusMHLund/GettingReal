@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GettingRealWPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,8 @@ using System.Windows.Shapes;
 
 namespace GettingRealWPF.Views
 {
-   
+
+    
     public partial class WindowAbonnementer : Window
     {
         public WindowAbonnementer()

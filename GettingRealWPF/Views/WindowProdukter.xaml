@@ -6,29 +6,13 @@
         xmlns:local="clr-namespace:GettingRealWPF" xmlns:viewmodels="clr-namespace:GettingRealWPF.ViewModels"
         xmlns:Produkter="clr-namespace:GettingRealWPF.Models.Produkter" x:Class="GettingRealWPF.WindowProdukter"
         Title="WindowProdukter" Height="450" Width="800">
-    <Window.DataContext>
-        <viewmodels:ProduktViewModel />
-    </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Button Content="Tilbage" HorizontalAlignment="Left" Margin="58,360,0,0" VerticalAlignment="Top" Height="38" Width="82" Click="Button_Click" Grid.RowSpan="2"/>
-        <ListBox ItemsSource="{Binding merchandises, UpdateSourceTrigger=PropertyChanged}"  Margin="26,77,628,91" Grid.RowSpan="2">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Samling.Navn}"/>
-                        <TextBlock Text="{Binding Samling.Varenummer}"/>
-                        <TextBlock Text="{Binding Samling.Pris}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <ListBox ItemsSource="{Binding SamlingRepository.BærMerchandise}" Margin="220,78,478,91" Grid.RowSpan="2"/>
-        <ListBox ItemsSource="{Binding Samling.Firmagaver}" Margin="381,77,317,91" Grid.RowSpan="2"/>
-        <ListBox ItemsSource="{Binding Samling.Profilbeklædning}" Margin="540,77,158,91" Grid.RowSpan="2"/>
 
 
 
@@ -39,6 +23,7 @@
         <Label Content="Profilbekledning" HorizontalAlignment="Left" Margin="540,43,0,0" VerticalAlignment="Top" Width="102" Grid.RowSpan="2"/>
         <Button Content="Tilføj Produkt" HorizontalAlignment="Left" Margin="540,360,0,0" VerticalAlignment="Top" Height="38" Width="102" Click="Button_Click_1" Grid.RowSpan="2"/>
 
+        <ListBox ItemsSource="{Binding TextFileContentLines, UpdateSourceTrigger=Default}" HorizontalAlignment="Left" Margin="26,77,0,91" Grid.RowSpan="2" FontSize="10" Width="172"/>
     </Grid>
 
 </Window>
