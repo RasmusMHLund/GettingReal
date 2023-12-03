@@ -11,26 +11,49 @@ using System.Windows.Input;
 using System.Windows;
 using System.IO;
 using System.Diagnostics;
+using System.Printing;
 
 namespace GettingRealWPF.ViewModels
 {
     public class ProduktViewModel : INotifyPropertyChanged
     {
 
-        private ObservableCollection<Merchandise> _merchandises;
-        public ObservableCollection<Merchandise> Merchandises
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
         {
-            get { return _merchandises; }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+
+
+        private ObservableCollection<Merchandise> _merchandiseItems;
+        public ObservableCollection<Merchandise> MerchandiseItems
+        {
+            get { return _merchandiseItems; }
             set
             {
-                _merchandises = value;
-                OnPropertyChanged(nameof(Merchandises));
+                _merchandiseItems = value;
+                OnPropertyChanged(nameof(MerchandiseItems));
             }
         }
 
-        //  public ObservableCollection<Samling> Merchandises { get; set; } = new ObservableCollection<Samling>();
-        Samling samling = new Samling();
-        public event PropertyChangedEventHandler? PropertyChanged;
+        private ObservableCollection<BærMerchandise> _bærMerchandiseItems;
+        public ObservableCollection<BærMerchandise> BærMerchandiseItems
+        {
+            get { return _bærMerchandiseItems; }
+            set
+            {
+                _bærMerchandiseItems = value;
+                OnPropertyChanged(nameof(BærMerchandiseItems));
+            }
+        }
+        public ProduktViewModel()
+        {
+            // Initialize collections for different categories
+            _merchandiseItems = new ObservableCollection<Merchandise>();
+            _bærMerchandiseItems = new ObservableCollection<BærMerchandise>();
+        }
         public ObservableCollection<Kategorier> Kategorier { get; set; } = new ObservableCollection<Kategorier>
         {
             new Kategorier("Merchandise"),
@@ -49,10 +72,7 @@ namespace GettingRealWPF.ViewModels
             }
         }
 
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
         private string _selectedNavn;
         public string SelectedNavn
         {
@@ -93,47 +113,50 @@ namespace GettingRealWPF.ViewModels
                 }
             }
         }
-        private ObservableCollection<string> _textFileContentLines;
-
-        public ObservableCollection<string> TextFileContentLines
+        private void LoadData() // Skal laves 
         {
-            get { return _textFileContentLines; }
-            set
-            {
-                _textFileContentLines = value;
-                OnPropertyChanged(nameof(TextFileContentLines));
-            }
+            
         }
-        public ProduktViewModel()
-        {
-            // Initialize Merchandises
-            _merchandises = new ObservableCollection<Merchandise>();
-        }
-
+        
         public void GemProdukt()
         {
             Kategorier valgtKategoriObjekt = ValgtKategori;
-            
+
             if (valgtKategoriObjekt != null)
             {
-                
-               
                 switch (valgtKategoriObjekt.NavnType)
                 {
                     case "Merchandise":
-                        Merchandise nytProdukt = new Merchandise()
+                        Merchandise nytMerch = new Merchandise()
                         {
                             Navn = SelectedNavn,
                             Varenummer = SelectedVarenummer,
                             Pris = SelectedPris,
-                            Kategori = ValgtKategori.NavnType
+                            Kategori = valgtKategoriObjekt.NavnType
                         };
-                        SaveToTextFile(nytProdukt);
+                        SaveToTextFile(nytMerch);
+                        MerchandiseItems.Add(nytMerch);
                         MessageBox.Show($"Tilføjede ny Merchandise {SelectedNavn}, {SelectedVarenummer}, {SelectedPris}");
-                        OnPropertyChanged(nameof(Merchandises));
+                        OnPropertyChanged(nameof(MerchandiseItems));
                         break;
 
-                    // Tilføj flere cases for andre kategorier efter behov
+                    case "BærMerchandise":
+                        BærMerchandise nytBærMerch = new BærMerchandise()
+                        {
+                            Navn = SelectedNavn,
+                            Varenummer = SelectedVarenummer,
+                            Pris = SelectedPris,
+                            Kategori = valgtKategoriObjekt.NavnType
+                        };
+                        SaveToTextFile(nytBærMerch);
+                        BærMerchandiseItems.Add(nytBærMerch);
+                        MessageBox.Show($"Tilføjede ny BærMechandise {SelectedNavn}, {SelectedVarenummer}, {SelectedPris}");
+                        OnPropertyChanged(nameof(BærMerchandiseItems));
+                        
+                        break;
+
+                        // Tilføj flere cases her
+                    
 
                     default:
                         MessageBox.Show("Ukendt kategori");
@@ -141,33 +164,54 @@ namespace GettingRealWPF.ViewModels
                 }
             }
         }
-        private void SaveToTextFile(Merchandise merchandise)
+        
+        
+        private void SaveToTextFile(Samling samling)
         {
-            // Specify the file path (you can customize this path)
-            string filePath = "MerchandiseData.txt";
+            
+            string filePath = $"{samling.Kategori}Data.txt";
 
-            // Check if the file exists, if not, create a new one
-            if (!File.Exists(filePath))
+            try
             {
-                using (StreamWriter createFile = File.CreateText(filePath))
+                // Check if the file exists, if not, create a new one
+                if (!File.Exists(filePath))
                 {
-                    // Write a header or any initial content if needed
-                    createFile.WriteLine("Navn, Varenummer, Pris, Kategori");
+                    using (StreamWriter createFile = File.CreateText(filePath))
+                    {
+                        // Write a header or any initial content if needed
+                        createFile.WriteLine("Navn, Varenummer, Pris");
+                    }
+                }
+
+                // Use StreamWriter to append the information to the text file
+                using (StreamWriter writer = File.AppendText(filePath))
+                {
+                    
+                    // Format the information and write it to the file
+                    string dataLine = $"{samling.Navn}, {samling.Varenummer}, {samling.Pris}";
+                    writer.WriteLine(dataLine);
+                }
+
+                // Update the corresponding ObservableCollection
+                if (samling is Merchandise merchandise)
+                {
+                    MerchandiseItems.Add(merchandise);
+                    OnPropertyChanged(nameof(MerchandiseItems));
+
+                }
+                else if (samling is BærMerchandise bærMerchandise)
+                {
+                    BærMerchandiseItems.Add(bærMerchandise);
+                    OnPropertyChanged(nameof(BærMerchandiseItems));
+
                 }
             }
-
-            // Use StreamWriter to append the information to the text file
-            using (StreamWriter writer = File.AppendText(filePath))
+            catch (Exception ex)
             {
-                // Format the information and write it to the file
-                string dataLine = $"{merchandise.Navn}, {merchandise.Varenummer}, {merchandise.Pris}, {merchandise.Kategori}";
-                writer.WriteLine(dataLine);
+                MessageBox.Show("Der skete en fejl");
+               
             }
-
-            // Read the content of the file and update the TextFileContentLines property
-            TextFileContentLines = new ObservableCollection<string>(File.ReadAllLines(filePath));
         }
-
     }
 
 }

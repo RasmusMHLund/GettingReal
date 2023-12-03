@@ -36,17 +36,12 @@ namespace GettingRealWPF.Views
         }
         private void GemProdukt_Click(object sender, RoutedEventArgs e)
         {
-            // Få adgang til ViewModel fra DataContext
+            
             ProduktViewModel viewModel = DataContext as ProduktViewModel;
+            viewModel.GemProdukt();
 
-            if (viewModel != null)
-            {
-                // Kald GemProdukt-metoden i ViewModel
-                viewModel.GemProdukt();
-
-                // Eventuel logik eller meddelelse efter gemning af produktet
-                MessageBox.Show("Produkt gemt succesfuldt.");
-            }
+               
+            
         }
 
     }

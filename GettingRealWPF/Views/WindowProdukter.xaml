@@ -23,7 +23,9 @@
         <Label Content="Profilbekledning" HorizontalAlignment="Left" Margin="540,43,0,0" VerticalAlignment="Top" Width="102" Grid.RowSpan="2"/>
         <Button Content="Tilføj Produkt" HorizontalAlignment="Left" Margin="540,360,0,0" VerticalAlignment="Top" Height="38" Width="102" Click="Button_Click_1" Grid.RowSpan="2"/>
 
-        <ListBox ItemsSource="{Binding TextFileContentLines, UpdateSourceTrigger=Default}" HorizontalAlignment="Left" Margin="26,77,0,91" Grid.RowSpan="2" FontSize="10" Width="172"/>
+        <ListBox ItemsSource="{Binding MerchandiseItems, UpdateSourceTrigger=Default}" HorizontalAlignment="Left" Margin="26,77,0,91" Grid.RowSpan="2" FontSize="10" Width="172"/>
+        <ListBox ItemsSource="{Binding  BærMerchandiseItems, UpdateSourceTrigger=Default}" HorizontalAlignment="Left" Margin="211,77,0,91" Grid.RowSpan="2" FontSize="10" Width="172"/>
+
     </Grid>
 
 </Window>

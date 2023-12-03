@@ -20,5 +20,9 @@ namespace GettingRealWPF.Models.Produkter
         public BærMerchandise(string navn) : this(navn, 0, "")
         {
         }
+        public BærMerchandise()
+        {
+            // Initialize default values or leave properties uninitialized
+        }
     }
 }
