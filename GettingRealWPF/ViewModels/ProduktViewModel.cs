@@ -12,6 +12,7 @@ using System.Windows;
 using System.IO;
 using System.Diagnostics;
 using System.Printing;
+using System.Windows.Controls;
 
 namespace GettingRealWPF.ViewModels
 {
@@ -27,8 +28,8 @@ namespace GettingRealWPF.ViewModels
 
 
 
-        private ObservableCollection<Merchandise> _merchandiseItems;
-        public ObservableCollection<Merchandise> MerchandiseItems
+        private ObservableCollection<Samling> _merchandiseItems;
+        public ObservableCollection<Samling> MerchandiseItems
         {
             get { return _merchandiseItems; }
             set
@@ -38,8 +39,8 @@ namespace GettingRealWPF.ViewModels
             }
         }
 
-        private ObservableCollection<BærMerchandise> _bærMerchandiseItems;
-        public ObservableCollection<BærMerchandise> BærMerchandiseItems
+        private ObservableCollection<Samling> _bærMerchandiseItems;
+        public ObservableCollection<Samling> BærMerchandiseItems
         {
             get { return _bærMerchandiseItems; }
             set
@@ -48,11 +49,43 @@ namespace GettingRealWPF.ViewModels
                 OnPropertyChanged(nameof(BærMerchandiseItems));
             }
         }
+
+        private ObservableCollection<Samling> _firmagaverItems;
+
+        public ObservableCollection<Samling> FirmagaverItems
+        {
+            get { return _firmagaverItems; }
+
+            set 
+            {
+                _firmagaverItems = value;
+                OnPropertyChanged(nameof(FirmagaverItems));
+            }
+        }
+
+        private ObservableCollection<Samling> _profilbeklædningItems;
+        public ObservableCollection<Samling> ProfilbeklædningItems
+        {
+            get { return _profilbeklædningItems; }
+
+            set
+            {
+                _profilbeklædningItems = value;
+                OnPropertyChanged(nameof(ProfilbeklædningItems));
+            }
+        }
         public ProduktViewModel()
         {
             // Initialize collections for different categories
-            _merchandiseItems = new ObservableCollection<Merchandise>();
-            _bærMerchandiseItems = new ObservableCollection<BærMerchandise>();
+            _merchandiseItems = new ObservableCollection<Samling>();
+            _bærMerchandiseItems = new ObservableCollection<Samling>();
+            _firmagaverItems = new ObservableCollection<Samling>();
+            _profilbeklædningItems = new ObservableCollection<Samling>();
+
+            LoadDataFromTxt("MerchandiseData.txt", MerchandiseItems);
+            LoadDataFromTxt("BærMerchandiseData.txt", BærMerchandiseItems);
+            LoadDataFromTxt("FirmagaverData.txt", FirmagaverItems);
+            LoadDataFromTxt("ProfilbeklædningData.txt", ProfilbeklædningItems);
         }
         public ObservableCollection<Kategorier> Kategorier { get; set; } = new ObservableCollection<Kategorier>
         {
@@ -113,11 +146,57 @@ namespace GettingRealWPF.ViewModels
                 }
             }
         }
-        private void LoadData() // Skal laves 
+
+        private void LoadDataFromTxt(string fileName, ObservableCollection<Samling> collection)
         {
-            
+            // Opret filstien baseret på den relative sti
+            string filePath = $"{fileName}";
+
+            // Kontroller om filen eksisterer
+            if (File.Exists(filePath))
+            {
+                // Åbn en StreamReader for at læse filen
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    // Ryd eksisterende data i collection
+                    collection.Clear();
+
+                    // Læs filen linje for linje
+                    while (!reader.EndOfStream)
+                    {
+                        string line = reader.ReadLine();
+
+                        // Del linjen i dele ved komma
+                        string[] parts = line.Split(',');
+
+                        // Kontroller, om der er mindst 3 dele
+                        if (parts.Length >= 3)
+                        {
+                            Samling samling = new Samling()
+                            {
+                                Navn = parts[0].Trim(),
+                                Varenummer = parts[1].Trim(),
+                                
+                            };
+
+                            // Kontroller og konverter prisen - konvertering fra string til double
+                            if (double.TryParse(parts[2].Trim(), out double pris))
+                            {
+                                samling.Pris = pris;
+                            }
+
+                            // Tilføj samlingen til ObservableCollection
+                            collection.Add(samling);
+                        }
+                    }
+                }
+
+                // Opdater visningen ved at udløse PropertyChanged-eventet
+                OnPropertyChanged(nameof(collection));
+            }
         }
-        
+    
+
         public void GemProdukt()
         {
             Kategorier valgtKategoriObjekt = ValgtKategori;
@@ -134,9 +213,10 @@ namespace GettingRealWPF.ViewModels
                             Pris = SelectedPris,
                             Kategori = valgtKategoriObjekt.NavnType
                         };
+                        
                         SaveToTextFile(nytMerch);
-                        MerchandiseItems.Add(nytMerch);
                         MessageBox.Show($"Tilføjede ny Merchandise {SelectedNavn}, {SelectedVarenummer}, {SelectedPris}");
+                        
                         OnPropertyChanged(nameof(MerchandiseItems));
                         break;
 
@@ -149,15 +229,37 @@ namespace GettingRealWPF.ViewModels
                             Kategori = valgtKategoriObjekt.NavnType
                         };
                         SaveToTextFile(nytBærMerch);
-                        BærMerchandiseItems.Add(nytBærMerch);
                         MessageBox.Show($"Tilføjede ny BærMechandise {SelectedNavn}, {SelectedVarenummer}, {SelectedPris}");
-                        OnPropertyChanged(nameof(BærMerchandiseItems));
                         
+                        OnPropertyChanged(nameof(BærMerchandiseItems));
                         break;
 
-                        // Tilføj flere cases her
-                    
+                    case "Firmagaver":
+                        Firmagaver nytFirmagaver = new Firmagaver()
+                        {
+                            Navn = SelectedNavn,
+                            Varenummer = SelectedVarenummer,
+                            Pris = SelectedPris,
+                            Kategori = valgtKategoriObjekt.NavnType
+                        };
+                        SaveToTextFile(nytFirmagaver);
+                        MessageBox.Show($"Tilføjede ny Firmagaver {SelectedNavn}, {SelectedVarenummer}, {SelectedPris}");
+                        OnPropertyChanged(nameof(FirmagaverItems));
+                        break;
 
+                    case "Profilbeklædning":
+                        Profilbeklædning nytProfilbeklædning = new Profilbeklædning()
+                        {
+                            Navn = SelectedNavn,
+                            Varenummer = SelectedVarenummer,
+                            Pris = SelectedPris,
+                            Kategori = valgtKategoriObjekt.NavnType
+                        };
+                        SaveToTextFile(nytProfilbeklædning);
+                        MessageBox.Show($"Tilføjede ny Profilbeklædning {SelectedNavn}, {SelectedVarenummer}, {SelectedPris}");
+                        OnPropertyChanged(nameof(ProfilbeklædningItems));
+                        break;
+          
                     default:
                         MessageBox.Show("Ukendt kategori");
                         break;
@@ -171,15 +273,13 @@ namespace GettingRealWPF.ViewModels
             
             string filePath = $"{samling.Kategori}Data.txt";
 
-            try
-            {
+            
                 // Check if the file exists, if not, create a new one
                 if (!File.Exists(filePath))
                 {
                     using (StreamWriter createFile = File.CreateText(filePath))
                     {
-                        // Write a header or any initial content if needed
-                        createFile.WriteLine("Navn, Varenummer, Pris");
+                        
                     }
                 }
 
@@ -205,15 +305,18 @@ namespace GettingRealWPF.ViewModels
                     OnPropertyChanged(nameof(BærMerchandiseItems));
 
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Der skete en fejl");
-               
-            }
+                else if (samling is Firmagaver firmagaver) 
+                {
+                    FirmagaverItems.Add(firmagaver);
+                    OnPropertyChanged(nameof(FirmagaverItems));
+                }
+                else if (samling is Profilbeklædning profilbeklædning) 
+                {
+                    ProfilbeklædningItems.Add(profilbeklædning);
+                    OnPropertyChanged(nameof(profilbeklædning));
+                }
         }
     }
-
 }
 
 

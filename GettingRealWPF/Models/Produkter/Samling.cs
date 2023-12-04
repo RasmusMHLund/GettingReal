@@ -28,16 +28,6 @@ namespace GettingRealWPF.Models.Produkter
             }
         }
 
-        private double _pris;
-        public double Pris
-        {
-            get { return _pris; }
-            set
-            {
-                _pris = value;
-                OnPropertyChanged(nameof(Pris));
-            }
-        }
 
         private string _varenummer;
         public string Varenummer
@@ -47,6 +37,17 @@ namespace GettingRealWPF.Models.Produkter
             {
                 _varenummer = value;
                 OnPropertyChanged(nameof(Varenummer));
+            }
+        }
+
+        private double _pris;
+        public double Pris
+        {
+            get { return _pris; }
+            set
+            {
+                _pris = value;
+                OnPropertyChanged(nameof(Pris));
             }
         }
 
@@ -63,7 +64,7 @@ namespace GettingRealWPF.Models.Produkter
 
         public override string ToString()
         {
-            return $"{Navn}, {Pris}, {Varenummer}";
+            return $"{Navn}, {Varenummer}, {Pris}";
         } 
     }
 }

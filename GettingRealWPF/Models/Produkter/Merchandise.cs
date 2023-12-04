@@ -9,16 +9,16 @@ namespace GettingRealWPF.Models.Produkter
 {
     public class Merchandise : Samling 
     {
-        public Merchandise(string navn, double pris, string varenummer) : base()
+        public Merchandise(string navn, string varenummer, double pris) : base()
         {
             Navn = navn;
             Pris = pris;
             Varenummer = varenummer;
         }
-        public Merchandise(string navn, double pris) : this(navn, pris, "")
+        public Merchandise(string navn, double pris) : this(navn, "", pris)
         {
         }
-        public Merchandise(string navn) : this(navn, 0, "")
+        public Merchandise(string navn) : this(navn, "", 0)
         {
         }
         public Merchandise()
