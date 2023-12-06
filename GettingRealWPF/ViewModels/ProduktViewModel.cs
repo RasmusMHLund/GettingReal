@@ -16,7 +16,7 @@ using System.Windows.Controls;
 
 namespace GettingRealWPF.ViewModels
 {
-    public class ProduktViewModel : INotifyPropertyChanged
+    public class ProduktViewModel : INotifyPropertyChanged 
     {
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -76,7 +76,9 @@ namespace GettingRealWPF.ViewModels
         }
         public ProduktViewModel()
         {
-            // Initialize collections for different categories
+
+            // Instasiere de forskellige collections og kalder med Load metoderne
+           
             _merchandiseItems = new ObservableCollection<Samling>();
             _bærMerchandiseItems = new ObservableCollection<Samling>();
             _firmagaverItems = new ObservableCollection<Samling>();
@@ -87,6 +89,8 @@ namespace GettingRealWPF.ViewModels
             LoadDataFromTxt("FirmagaverData.txt", FirmagaverItems);
             LoadDataFromTxt("ProfilbeklædningData.txt", ProfilbeklædningItems);
         }
+
+        // Bindet til dropdown menuen
         public ObservableCollection<Kategorier> Kategorier { get; set; } = new ObservableCollection<Kategorier>
         {
             new Kategorier("Merchandise"),
@@ -158,9 +162,7 @@ namespace GettingRealWPF.ViewModels
                 // Åbn en StreamReader for at læse filen
                 using (StreamReader reader = new StreamReader(filePath))
                 {
-                    // Ryd eksisterende data i collection
-                    collection.Clear();
-
+                   
                     // Læs filen linje for linje
                     while (!reader.EndOfStream)
                     {
@@ -279,7 +281,7 @@ namespace GettingRealWPF.ViewModels
                 {
                     using (StreamWriter createFile = File.CreateText(filePath))
                     {
-                        
+                         // Laver en fil hvis filen ikke eksitere ved navn filpath  
                     }
                 }
 
@@ -300,7 +302,7 @@ namespace GettingRealWPF.ViewModels
 
                 }
                 else if (samling is BærMerchandise bærMerchandise)
-                {
+                {   
                     BærMerchandiseItems.Add(bærMerchandise);
                     OnPropertyChanged(nameof(BærMerchandiseItems));
 
