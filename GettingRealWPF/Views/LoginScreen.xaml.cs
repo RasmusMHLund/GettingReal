@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GettingRealWPF.Views;
 
 namespace GettingRealWPF
 {
@@ -26,8 +27,8 @@ namespace GettingRealWPF
 
         private void KundeLogin(object sender, RoutedEventArgs e)
         {
-            KundeView kundeView = new KundeView();
-            kundeView.Show();
+            TilmeldKunde tilmeldKunde = new TilmeldKunde();
+            tilmeldKunde.Show();
             Close();
         }
 
