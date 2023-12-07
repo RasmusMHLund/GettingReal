@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 
 namespace GettingRealWPF.Models.Produkter
 {
-    internal class Firmagaver : Samling
+    public class Firmagaver : Samling
     {
-        public Firmagaver(string navn, double pris, string varenummer) : base()
+        public Firmagaver(string navn, string varenummer, double pris) : base()
         {
             Navn = navn;
             Pris = pris;
             Varenummer = varenummer;
         }
-        public Firmagaver(string navn, double pris) : this(navn, pris, "")
+        public Firmagaver(string navn, double pris) : this(navn, "", pris)
         {
         }
-        public Firmagaver(string navn) : this(navn, 0, "")
+        public Firmagaver(string navn) : this(navn, "", 0)
+        {
+        }
+        public Firmagaver()
         {
         }
     }

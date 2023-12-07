@@ -6,19 +6,25 @@ using System.Threading.Tasks;
 
 namespace GettingRealWPF.Models.Produkter
 {
-    internal class BærMerchandise : Samling
+    namespace GettingRealWPF.Models.Produkter
     {
-        public BærMerchandise(string navn, double pris, string varenummer) : base()
+        public class BærMerchandise : Samling
         {
-            Navn = navn;
-            Pris = pris;
-            Varenummer = varenummer;
-        }
-        public BærMerchandise(string navn, double pris) : this(navn, pris, "")
-        {
-        }
-        public BærMerchandise(string navn) : this(navn, 0, "")
-        {
+            public BærMerchandise(string navn, string varenummer, double pris) : base()
+            {
+                Navn = navn;
+                Pris = pris;
+                Varenummer = varenummer;
+            }
+            public BærMerchandise(string navn, double pris) : this(navn, "", pris)
+            {
+            }
+            public BærMerchandise(string navn) : this(navn, "", 0)
+            {
+            }
+            public BærMerchandise()
+            {
+                // Initialize default values or leave properties uninitialized
+            }
         }
     }
-}
