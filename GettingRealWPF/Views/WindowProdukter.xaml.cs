@@ -22,6 +22,7 @@ namespace GettingRealWPF
     /// </summary>
     public partial class WindowProdukter : Window
     {
+<<<<<<< HEAD
         private ProduktViewModel viewModel;
 
         public WindowProdukter()
@@ -30,6 +31,16 @@ namespace GettingRealWPF
             viewModel = new ProduktViewModel();
             DataContext = viewModel;
 
+=======
+        private ProduktViewModel viewModel; 
+       
+        public WindowProdukter()
+        {
+            InitializeComponent();
+            viewModel = new ProduktViewModel(); 
+            DataContext = viewModel;
+            
+>>>>>>> Produkter
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

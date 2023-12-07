@@ -36,12 +36,21 @@ namespace GettingRealWPF.Views
         }
         private void GemProdukt_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
 
             ProduktViewModel viewModel = DataContext as ProduktViewModel;
             viewModel.GemProdukt();
 
 
 
+=======
+            
+            ProduktViewModel viewModel = DataContext as ProduktViewModel;
+            viewModel.GemProdukt();
+
+               
+            
+>>>>>>> Produkter
         }
 
     }
