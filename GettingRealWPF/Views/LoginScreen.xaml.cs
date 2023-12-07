@@ -34,9 +34,19 @@ namespace GettingRealWPF
 
         private void AdminLogin(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            Close();
+            // Open the LoginWindow
+            var adminLogin = new AdminLogin();
+            if (adminLogin.ShowDialog() == true)
+            {
+                // Login successful, open the MainWindow
+                var mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                // Handle login failure or cancellation
+            }
         }
     }
 }
