@@ -11,7 +11,7 @@
         <Button Content="Tilbage" HorizontalAlignment="Left" Margin="50,363,0,0" VerticalAlignment="Top" Height="34" Width="66" Click="Button_Click"/>
         <Button Content="Rediger Kunde" HorizontalAlignment="Left" Margin="221,154,0,0" VerticalAlignment="Top" Height="28" Width="109"/>
         <Button Content="Fjern Kunde" HorizontalAlignment="Left" Margin="221,217,0,0" VerticalAlignment="Top" Height="31" Width="109"/>
-        <Button Content="Tilføj Kunde" HorizontalAlignment="Left" Margin="221,93,0,0" VerticalAlignment="Top" Height="27" Width="109"/>
+        <Button Content="Tilføj Kunde" HorizontalAlignment="Left" Margin="221,93,0,0" VerticalAlignment="Top" Height="27" Width="109" Click="TilføjKunde"/>
         <Label Content="Kunde Liste" HorizontalAlignment="Left" Margin="83,39,0,0" VerticalAlignment="Top" Height="27"/>
 
     </Grid>

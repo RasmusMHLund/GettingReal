@@ -26,5 +26,13 @@ namespace GettingRealWPF.Views
         {
             Close();
         }
+
+        private void TilføjKunde(object sender, RoutedEventArgs e)
+        {
+            TilmeldKunde tilmeldKunde = new TilmeldKunde();
+            tilmeldKunde.Show();
+            Close();
+        }
+
     }
 }
