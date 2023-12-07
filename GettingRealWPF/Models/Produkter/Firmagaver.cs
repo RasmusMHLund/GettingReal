@@ -18,16 +18,10 @@ namespace GettingRealWPF.Models.Produkter
         {
         }
         public Firmagaver(string navn) : this(navn, "", 0)
-<<<<<<< HEAD
         {
         }
         public Firmagaver()
-=======
->>>>>>> Produkter
         {
-        }
-        public Firmagaver() 
-        { 
         }
     }
 }

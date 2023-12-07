@@ -15,12 +15,6 @@ using System.Windows.Shapes;
 
 namespace GettingRealWPF.Views
 {
-
-<<<<<<< HEAD:GettingRealWPF/Views/Kunder/WindowAbonnementer.xaml.cs
-
-=======
-    
->>>>>>> Produkter:GettingRealWPF/Views/WindowAbonnementer.xaml.cs
     public partial class WindowAbonnementer : Window
     {
         public WindowAbonnementer()

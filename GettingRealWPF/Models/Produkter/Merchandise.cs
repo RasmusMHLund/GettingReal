@@ -7,11 +7,7 @@ using System.Threading.Tasks;
 
 namespace GettingRealWPF.Models.Produkter
 {
-<<<<<<< HEAD
     public class Merchandise : Samling
-=======
-    public class Merchandise : Samling 
->>>>>>> Produkter
     {
         public Merchandise(string navn, string varenummer, double pris) : base()
         {
