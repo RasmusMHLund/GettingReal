@@ -318,6 +318,28 @@ namespace GettingRealWPF.ViewModels
                     OnPropertyChanged(nameof(profilbeklædning));
                 }
         }
+
+        public void RemoveSelectedItems(ObservableCollection<Samling> itemList, ListBox listBox)
+        {
+
+            // Konverter objekterne i SelectedItems til Samling type
+            var selectedItems = listBox.SelectedItems.Cast<Samling>().ToList();
+
+            foreach (var selectedItem in selectedItems)
+            {
+                itemList.Remove(selectedItem);
+            }
+            UpdateTextFile($"", itemList);
+        }
+        public void UpdateTextFile(string kategori, ObservableCollection<Samling> itemList)
+        {
+            string filePath = $"{kategori}Data.txt";
+            // Konverter ObservableCollection til en liste og skriv listen til tekstfilen
+            List<string> lines = itemList.Select(item => item.ToString()).ToList();
+
+            // Overskriv eksisterende fil med den opdaterede liste
+            File.WriteAllLines(filePath, lines);
+        }
     }
 }
 

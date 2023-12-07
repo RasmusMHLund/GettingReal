@@ -43,6 +43,31 @@ namespace GettingRealWPF
             tilføjProdukt.Show();
         }
 
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            // Tjekker hvilken listbox der er markeret ved hjælp af count
+            if (listBoxMerchandise.SelectedItems.Count > 0)
+            {
+                viewModel.RemoveSelectedItems(viewModel.MerchandiseItems, listBoxMerchandise);
+                viewModel.UpdateTextFile("Merchandise", viewModel.MerchandiseItems);
+            }
+            else if (listBoxBærMerchandise.SelectedItems.Count > 0)
+            {
+                viewModel.RemoveSelectedItems(viewModel.BærMerchandiseItems, listBoxBærMerchandise);
+                viewModel.UpdateTextFile("BærMerchandise", viewModel.BærMerchandiseItems);
+            }
+            else if (listBoxFirmagaver.SelectedItems.Count > 0)
+            {
+                viewModel.RemoveSelectedItems(viewModel.FirmagaverItems, listBoxFirmagaver);
+                viewModel.UpdateTextFile("Firmagaver", viewModel.FirmagaverItems);
+            }
+            else if (listBoxProfilbeklædning.SelectedItems.Count > 0)
+            {
+                viewModel.RemoveSelectedItems(viewModel.ProfilbeklædningItems, listBoxProfilbeklædning);
+                viewModel.UpdateTextFile("Profilbeklædning", viewModel.ProfilbeklædningItems);
+            }
+        }
+
 
     }
 }
