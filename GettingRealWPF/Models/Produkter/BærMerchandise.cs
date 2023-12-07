@@ -28,3 +28,4 @@ namespace GettingRealWPF.Models.Produkter
             }
         }
     }
+}
