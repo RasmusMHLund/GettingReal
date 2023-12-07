@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GettingRealWPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,9 +15,8 @@ using System.Windows.Shapes;
 
 namespace GettingRealWPF.Views
 {
-    /// <summary>
-    /// Interaction logic for WindowAbonnementer.xaml
-    /// </summary>
+
+
     public partial class WindowAbonnementer : Window
     {
         public WindowAbonnementer()
@@ -27,12 +27,6 @@ namespace GettingRealWPF.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            TilmeldKunde tilmeldKunde = new TilmeldKunde();
-            tilmeldKunde.Show();
         }
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GettingRealWPF.Views;
+
 namespace GettingRealWPF
 {
     /// <summary>
@@ -37,7 +38,7 @@ namespace GettingRealWPF
             windowProdukter.Show();
         }
 
-        private void BtnAbonnementer_Clik(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             WindowAbonnementer windowAbonnementer = new WindowAbonnementer();
             windowAbonnementer.Show();
