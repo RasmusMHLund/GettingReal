@@ -8,5 +8,6 @@ namespace GettingRealWPF.Models
 {
     public class Medarbejder
     {
+
     }
 }
