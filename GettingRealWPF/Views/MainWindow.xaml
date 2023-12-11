@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Width="{x:Static SystemParameters.PrimaryScreenWidth}"  
         Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
+        WindowStartupLocation="CenterScreen"
         Title="Nyhedsbrevsystem">
 
     <Grid>
@@ -27,17 +28,8 @@
                 FontSize="30" 
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Top" 
-                Margin="0,497,0,0"
+                Margin="0,500,0,0"
                 Click="produkt_Click"
-                />
-
-        <Button Content="Abonnementer" 
-                Width="420" 
-                Height="46" 
-                FontSize="30" 
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Top" 
-                Margin="0,566,0,0" Click="Button_Click" 
                 />
 
         <Button Content="Nyhedsbrev" 
@@ -46,7 +38,15 @@
                 FontSize="30" 
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Top" 
-                Margin="0,432,0,0" 
-                Click="Brev_Click"/>
+                Margin="0,570,0,0" Click="Button_Click" 
+                />
+        <Button Content="Luk program" 
+            Width="420" 
+            Height="46" 
+            FontSize="30" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Top" 
+            Margin="0,640,0,0" Click="Luk_Click" 
+                />
     </Grid>
 </Window>

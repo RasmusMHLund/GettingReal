@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GettingRealWPF.ViewModels;
 using GettingRealWPF.Views;
+
 
 namespace GettingRealWPF
 {
@@ -23,10 +25,12 @@ namespace GettingRealWPF
         public LoginScreen()
         {
             InitializeComponent();
+           
         }
 
         private void KundeLogin(object sender, RoutedEventArgs e)
         {
+
             TilmeldKunde tilmeldKunde = new TilmeldKunde();
             tilmeldKunde.Show();
             Close();

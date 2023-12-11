@@ -12,14 +12,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GettingRealWPF.ViewModels;
+using System.Runtime.CompilerServices;
 
 namespace GettingRealWPF.Views
 {
     public partial class WindowAbonnementer : Window
     {
+        private KundeViewModel viewModel;
         public WindowAbonnementer()
         {
             InitializeComponent();
+            viewModel = new KundeViewModel();
+            DataContext = viewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,5 +39,15 @@ namespace GettingRealWPF.Views
             Close();
         }
 
+        private void FjernKunde_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.RemoveSelectedKunde(viewModel.KundeItems, Kundeliste);
+            viewModel.UpdateTextFile(viewModel.KundeItems);
+        }
+
+        private void SendNyhedsbrev_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Nyhedsbrev sendt til valgte kunder");
+        }
     }
 }

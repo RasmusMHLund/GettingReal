@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GettingRealWPF.ViewModels;
 using GettingRealWPF.Views;
 
 namespace GettingRealWPF
@@ -21,16 +22,13 @@ namespace GettingRealWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Brev_Click(object sender, RoutedEventArgs e)
-        {
-            BrevWindow brevWindow = new BrevWindow();
-            brevWindow.Show();
-        }
+        
 
         private void produkt_Click(object sender, RoutedEventArgs e)
         {
@@ -42,6 +40,11 @@ namespace GettingRealWPF
         {
             WindowAbonnementer windowAbonnementer = new WindowAbonnementer();
             windowAbonnementer.Show();
+        }
+
+        private void Luk_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

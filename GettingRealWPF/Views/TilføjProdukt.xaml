@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GettingRealWPF.Views" xmlns:viewmodels="clr-namespace:GettingRealWPF.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ProduktViewModel}"
         mc:Ignorable="d" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         Title="TilføjProdukt" Height="450" Width="800">
     <Window.DataContext>
         <viewmodels:ProduktViewModel />

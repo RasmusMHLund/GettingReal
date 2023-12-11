@@ -203,8 +203,7 @@ namespace GettingRealWPF.ViewModels
         {
             Kategorier valgtKategoriObjekt = ValgtKategori;
 
-            if (valgtKategoriObjekt != null)
-            {
+            
                 switch (valgtKategoriObjekt.NavnType)
                 {
                     case "Merchandise":
@@ -265,7 +264,7 @@ namespace GettingRealWPF.ViewModels
                     default:
                         MessageBox.Show("Ukendt kategori");
                         break;
-                }
+                
             }
         }
         

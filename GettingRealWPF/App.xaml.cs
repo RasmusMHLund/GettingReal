@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GettingRealWPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,6 @@ namespace GettingRealWPF
     /// </summary>
     public partial class App : Application
     {
+        
     }
 }

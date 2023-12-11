@@ -5,14 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GettingRealWPF.Views"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="WindowAbonnementer" Height="450" Width="800">
     <Grid>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="41,72,608,143"/>
         <Button Content="Tilbage" HorizontalAlignment="Left" Margin="50,363,0,0" VerticalAlignment="Top" Height="34" Width="66" Click="Button_Click"/>
-        <Button Content="Rediger Kunde" HorizontalAlignment="Left" Margin="221,154,0,0" VerticalAlignment="Top" Height="28" Width="109"/>
-        <Button Content="Fjern Kunde" HorizontalAlignment="Left" Margin="221,217,0,0" VerticalAlignment="Top" Height="31" Width="109"/>
-        <Button Content="Tilføj Kunde" HorizontalAlignment="Left" Margin="221,93,0,0" VerticalAlignment="Top" Height="27" Width="109" Click="TilføjKunde"/>
-        <Label Content="Kunde Liste" HorizontalAlignment="Left" Margin="83,39,0,0" VerticalAlignment="Top" Height="27"/>
+        <Button Content="Fjern Kunde" HorizontalAlignment="Left" Margin="481,0,0,0" VerticalAlignment="Center" Height="31" Width="109" Click="FjernKunde_Click"/>
+        <Button Content="Tilmeld Kunde" HorizontalAlignment="Left" Margin="481,136,0,0" VerticalAlignment="Top" Height="27" Width="109" Click="TilføjKunde"/>
+        <Label Content="Kunde Liste" HorizontalAlignment="Left" Margin="102,19,0,0" VerticalAlignment="Top" Height="53" FontSize="25" Width="209"/>
+        <ListBox x:Name="Kundeliste" ItemsSource="{Binding KundeItems, UpdateSourceTrigger=PropertyChanged}" Margin="41,72,375,143" FontSize="15"
+                 SelectionMode="Multiple">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Mail}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="Send nyhedsbrev" HorizontalAlignment="Left" Margin="267,366,0,0" VerticalAlignment="Top" Height="31" Width="109" Click="SendNyhedsbrev_Click"/>
 
     </Grid>
 </Window>
