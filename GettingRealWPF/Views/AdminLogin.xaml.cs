@@ -30,16 +30,15 @@ namespace GettingRealWPF.Views
             string username = txtUsername.Text;
             string password = txtPassword.Password;
             
-            // Validate username and password (replace with your authentication logic)
-            if (username == "1" && password == "1")
+            // Validate username and password
+            if (username == "Admin" && password == "AdminLogin123")
             {
-                MessageBox.Show("Login successful!");
                 DialogResult = true;
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Invalid username or password");
+                MessageBox.Show("Forkerte login oplysninger, prøv igen.");
                 DialogResult = false;
                 
             }

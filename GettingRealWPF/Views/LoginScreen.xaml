@@ -9,8 +9,9 @@
         WindowStartupLocation="CenterScreen"
         Title="LoginScreen" Height="450" Width="800">
     <Grid>
-        <Button Content="Kunde Login" HorizontalAlignment="Center" Margin="0,181,0,0" VerticalAlignment="Top" Height="36" Width="136" Click="KundeLogin"/>
-        <Button Content="Admin Login" HorizontalAlignment="Center" Margin="0,247,0,0" VerticalAlignment="Top" Height="36" Width="136" Click="AdminLogin"/>
+        <Button Content="Kunde" HorizontalAlignment="Center" Margin="0,181,0,0" VerticalAlignment="Top" Height="36" Width="136" Click="KundeLogin"/>
+        <Button Content="Admin" HorizontalAlignment="Center" Margin="0,247,0,0" VerticalAlignment="Top" Height="36" Width="136" Click="AdminLogin"/>
+        <Image Margin="729,0,0,357" Source="/Images/Screenshot 2023-12-11 111401.png" Stretch="Fill"/>
 
     </Grid>
 </Window>

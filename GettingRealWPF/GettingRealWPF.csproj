@@ -9,10 +9,12 @@
 
   <ItemGroup>
     <None Remove="Images\DSC.jpg" />
+    <None Remove="Images\Screenshot 2023-12-11 111401.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Images\DSC.jpg" />
+    <Resource Include="Images\Screenshot 2023-12-11 111401.png" />
   </ItemGroup>
 
 </Project>

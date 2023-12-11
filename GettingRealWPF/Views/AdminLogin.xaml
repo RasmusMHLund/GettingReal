@@ -15,6 +15,7 @@
             <Label Content="Password:" />
             <PasswordBox x:Name="txtPassword" />
             <Button Content="Login" Click="Login_Click" />
+            
         </StackPanel>
     </Grid>
 </Window>
