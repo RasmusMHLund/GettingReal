@@ -333,8 +333,14 @@ namespace GettingRealWPF.ViewModels
         public void UpdateTextFile(string kategori, ObservableCollection<Samling> itemList)
         {
             string filePath = $"{kategori}Data.txt";
+
             // Konverter ObservableCollection til en liste og skriv listen til tekstfilen
-            List<string> lines = itemList.Select(item => item.ToString()).ToList();
+            List<string> lines = new List<string>();
+
+            foreach (var item in itemList)
+            {
+                lines.Add(item.ToString());
+            }
 
             // Overskriv eksisterende fil med den opdaterede liste
             File.WriteAllLines(filePath, lines);

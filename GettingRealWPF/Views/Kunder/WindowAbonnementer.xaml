@@ -12,7 +12,7 @@
         <Button Content="Fjern Kunde" HorizontalAlignment="Left" Margin="481,0,0,0" VerticalAlignment="Center" Height="31" Width="109" Click="FjernKunde_Click"/>
         <Button Content="Tilmeld Kunde" HorizontalAlignment="Left" Margin="481,136,0,0" VerticalAlignment="Top" Height="27" Width="109" Click="TilføjKunde"/>
         <Label Content="Kunde Liste" HorizontalAlignment="Left" Margin="148,19,0,0" VerticalAlignment="Top" Height="53" FontWeight="Medium" FontSize="30" Width="170"/>
-        <ListBox x:Name="Kundeliste" ItemsSource="{Binding KundeItems, UpdateSourceTrigger=PropertyChanged}" Margin="41,72,375,143" FontSize="15"
+        <ListBox x:Name="Kundeliste" ItemsSource="{Binding KundeInfo, UpdateSourceTrigger=PropertyChanged}" Margin="41,72,375,143" FontSize="15"
                  SelectionMode="Multiple">
             <ListBox.ItemTemplate>
                 <DataTemplate>

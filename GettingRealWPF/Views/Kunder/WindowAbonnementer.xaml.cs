@@ -41,8 +41,8 @@ namespace GettingRealWPF.Views
 
         private void FjernKunde_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.RemoveSelectedKunde(viewModel.KundeItems, Kundeliste);
-            viewModel.UpdateTextFile(viewModel.KundeItems);
+            viewModel.RemoveSelectedKunde(viewModel.KundeInfo, Kundeliste);
+            viewModel.UpdateTextFile(viewModel.KundeInfo);
         }
 
         private void SendNyhedsbrev_Click(object sender, RoutedEventArgs e)

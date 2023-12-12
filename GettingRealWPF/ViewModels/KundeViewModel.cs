@@ -23,14 +23,14 @@ namespace GettingRealWPF.ViewModels
         }
        
 
-        private ObservableCollection<Kunde> _kundeItems;
-        public ObservableCollection<Kunde> KundeItems
+        private ObservableCollection<Kunde> _kundeInfo;
+        public ObservableCollection<Kunde> KundeInfo
         {
-            get { return _kundeItems; }
+            get { return _kundeInfo; }
             set
             {
-                _kundeItems = value;
-                OnPropertyChanged(nameof(KundeItems));
+                _kundeInfo = value;
+                OnPropertyChanged(nameof(KundeInfo));
             }
         }
 
@@ -58,9 +58,9 @@ namespace GettingRealWPF.ViewModels
 
         public KundeViewModel()
         {
-            _kundeItems = new ObservableCollection<Kunde>();
+            _kundeInfo = new ObservableCollection<Kunde>();
             SelectedKategorier = new ObservableCollection<Kategorier>();
-            LoadDataFromTxt("KundeData.txt", KundeItems);
+            LoadDataFromTxt("KundeData.txt", KundeInfo);
         }
         public ObservableCollection<Kategorier> Kategorier { get; set; } = new ObservableCollection<Kategorier>
         {
@@ -87,21 +87,37 @@ namespace GettingRealWPF.ViewModels
 
             if (!string.IsNullOrEmpty(newMail) && SelectedKategorier.Any())
             {
-                Kunde kunde = new Kunde() 
+                Kunde kunde = new Kunde()
                 {
-                    Mail = newMail, 
-                    Kategorier = new ObservableCollection<Kategorier>(SelectedKategorier) 
+                    Mail = newMail,
+                    Kategorier = new ObservableCollection<Kategorier>(SelectedKategorier)
                 };
-                KundeItems.Add(kunde);
+
+                KundeInfo.Add(kunde);
                 SaveToTextFile(newMail, SelectedKategorier);
-                MessageBox.Show($"Tilføjede ny mail: {newMail} Valgte interesser: {string.Join(", ", SelectedKategorier.Select(k => k.NavnType))}");
-                OnPropertyChanged(nameof(KundeItems));
+
+                
+                string selectedKategorierString = "";
+                foreach (var kategori in SelectedKategorier)
+                {
+                    selectedKategorierString += kategori.NavnType + ", ";
+                }
+
+                // Fjern det sidste komma og mellemrum
+                if (!string.IsNullOrEmpty(selectedKategorierString))
+                {
+                    selectedKategorierString = selectedKategorierString.Substring(0, selectedKategorierString.Length - 2);
+                }
+
+                MessageBox.Show($"Tilføjede ny mail: {newMail} Valgte interesser: {selectedKategorierString}");
+                OnPropertyChanged(nameof(KundeInfo));
             }
             else
             {
                 MessageBox.Show("Mail, og mindst en kategori skal være valgt.");
             }
         }
+
 
 
         private void SaveToTextFile(string mail, ObservableCollection<Kategorier> selectedKategorier)
@@ -117,7 +133,22 @@ namespace GettingRealWPF.ViewModels
 
             using (StreamWriter writer = File.AppendText(filePath))
             {
-                writer.WriteLine($"{mail} - {string.Join(",", selectedKategorier.Select(k => k.NavnType))}");
+                string line = $"{mail} - ";
+
+                bool isFirstCategory = true;  
+
+                foreach (var kategori in selectedKategorier)
+                {
+                    if (!isFirstCategory)
+                    {
+                        line += ", ";
+                    }
+
+                    line += kategori.NavnType;
+                    isFirstCategory = false;  // Bruges til at se om den skal skrive komma efter en kategori. 
+                }
+
+                writer.WriteLine(line);
             }
         }
 
@@ -159,7 +190,12 @@ namespace GettingRealWPF.ViewModels
             string filePath = "KundeData.txt";
 
             // Konverter ObservableCollection til en liste og skriv listen til tekstfilen
-            List<string> lines = itemList.Select(item => item.ToString()).ToList();
+            List<string> lines = new List<string>();
+
+            foreach (var item in itemList)
+            {
+                lines.Add(item.ToString());
+            }
 
             // Overskriv eksisterende fil med den opdaterede liste
             File.WriteAllLines(filePath, lines);

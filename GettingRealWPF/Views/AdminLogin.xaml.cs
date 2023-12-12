@@ -15,9 +15,7 @@ using GettingRealWPF.Views;
 
 namespace GettingRealWPF.Views
 {
-    /// <summary>
-    /// Interaction logic for AdminLogin.xaml
-    /// </summary>
+    
     public partial class AdminLogin : Window
     {
         public AdminLogin()
